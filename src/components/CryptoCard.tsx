@@ -1,12 +1,17 @@
 import { Link } from 'react-router-dom';
 import type { Crypto } from '../types/crypto';
+import { useCryptoStore } from '../store/useCryptoStore'; 
 
 interface CryptoCardProps {
   crypto: Crypto;
-  onToggleFavorite: (id: string) => void;
 }
 
-function CryptoCard({ crypto, onToggleFavorite }: CryptoCardProps) {
+function CryptoCard({ crypto }: CryptoCardProps) {
+    const favorites = useCryptoStore((state) => state.favorites);
+    const toggleFavorite = useCryptoStore((state) => state.toggleFavorite);
+
+    const isFavorite = favorites.includes(crypto.id);
+
     return (
         <article 
             className="crypto-card" 
@@ -41,18 +46,18 @@ function CryptoCard({ crypto, onToggleFavorite }: CryptoCardProps) {
                 <button
                     type="button"
                     className="favorite-button"
-                    onClick={() => onToggleFavorite(crypto.id)}
-                    aria-label={crypto.isFavorite ? 'Quitar de favoritas' : 'Añadir a favoritas'}
+                    onClick={() => toggleFavorite(crypto.id)}
+                    aria-label={isFavorite ? 'Quitar de favoritas' : 'Añadir a favoritas'}
                     style={{
                         background: 'none',
                         border: 'none',
                         cursor: 'pointer',
                         fontSize: '1.4rem',
-                        color: crypto.isFavorite ? 'var(--accent-color)' : '#b5ada3',
+                        color: isFavorite ? 'var(--accent-color)' : '#b5ada3',
                         padding: '0.2rem',
                     }}
                 >
-                    {crypto.isFavorite ? '★' : '☆'}
+                    {isFavorite ? '★' : '☆'}
                 </button>
             </div>
           </div>
