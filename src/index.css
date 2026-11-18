@@ -1,0 +1,280 @@
+:root {
+  --bg-color: #faf8f5;
+  --card-bg: #ffffff;
+  --card-border: #f0ebe1;
+  --text-primary: #292524;
+  --text-secondary: #8c857b;
+  --accent-color: #d97757;
+  --btn-dark: #292524;
+  --btn-dark-hover: #443e3c;
+  --font-serif: 'Newsreader', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.site-header {
+  padding: 2rem 0;
+  background-color: transparent;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1.15rem;
+  transition: opacity 0.2s ease;
+}
+
+.brand:hover {
+  opacity: 0.8;
+}
+
+.brand-icon {
+  background-color: var(--accent-color);
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(217, 119, 87, 0.25);
+  flex-shrink: 0;
+}
+
+.header-label {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.main-content {
+  flex: 1;
+  padding: 3rem 2rem 5rem;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.eyebrow {
+  display: inline-block;
+  background-color: #f2ede4;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.intro h1 {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+  color: var(--text-primary);
+}
+
+.intro-text {
+  color: var(--text-secondary);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.query-panel {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 2rem;
+  padding: 0.75rem 1.25rem;
+  margin: 0 auto 3.5rem;
+  max-width: 720px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 12px 35px -10px rgba(41, 37, 36, 0.03);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.query-panel:focus-within {
+  border-color: var(--accent-color);
+  box-shadow: 0 12px 35px -10px rgba(217, 119, 87, 0.08);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+  min-width: 180px;
+}
+
+.form-group label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.query-panel input, 
+.query-panel select {
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  padding: 0.4rem 0;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  outline: none;
+  width: 100%;
+}
+
+.query-panel input::placeholder {
+  color: #b5ada3;
+}
+
+.query-panel select {
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  text-transform: none !important;
+  font-weight: 500 !important;
+}
+
+button, .primary-button {
+  background-color: var(--btn-dark);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.75rem;
+  border-radius: 2rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+button:hover, .primary-button:hover {
+  background-color: var(--btn-dark-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(41, 37, 36, 0.12);
+}
+
+.secondary-button {
+  background-color: #f2ede4;
+  color: var(--text-primary);
+  border-radius: 2rem;
+  padding: 0.65rem 1.25rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.secondary-button:hover {
+  background-color: #e8e1d5;
+  transform: translateY(-1px);
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.section-heading h2 {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  font-weight: 500;
+}
+
+.currency-label {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  box-shadow: 0 2px 8px rgba(41, 37, 36, 0.02);
+}
+
+.crypto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.crypto-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 1.75rem;
+  padding: 2rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 6px 25px -8px rgba(41, 37, 36, 0.02);
+}
+
+.crypto-card:hover {
+  transform: translateY(-4px);
+  border-color: #e2dad0;
+  box-shadow: 0 16px 35px -10px rgba(41, 37, 36, 0.06);
+}
+
+.crypto-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
