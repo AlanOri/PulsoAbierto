@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
-import type { Crypto } from '../types/crypto'
+import type { Crypto } from '../types/Crypto'
 import { fetchCryptos } from '../services/cryptoservice'
+import { useCryptoStore } from '../store/useCryptoStore'
 import QueryControls from '../components/QueryControls'
 import CryptoList from '../components/CryptoList'
 import StatusMessage from '../components/StatusMessage'
@@ -8,10 +9,12 @@ import StatusMessage from '../components/StatusMessage'
 export default function HomePage() {
   const [cryptos, setCryptos] = useState<Crypto[]>([])
   const [searchTerm, setSearchTerm] = useState('')
-  const [selectedCurrency, setSelectedCurrency] = useState('USD')
+  const [selectedCurrency, setSelectedCurrency] = useState('usd')
   const [onlyFavorites, setOnlyFavorites] = useState(false)
   const [status, setStatus] = useState<'loading' | 'success' | 'error' | 'empty'>('loading')
   const [errorMessage, setErrorMessage] = useState('')
+
+  const favorites = useCryptoStore((state) => state.favorites)
 
   const loadData = async () => {
     setStatus('loading')
@@ -53,18 +56,11 @@ export default function HomePage() {
     }
   }, [selectedCurrency])
 
-  function handleToggleFavorite(cryptoId: string) {
-    setCryptos(prevCryptos =>
-      prevCryptos.map(crypto =>
-        crypto.id === cryptoId ? { ...crypto, isFavorite: !crypto.isFavorite } : crypto
-      )
-    )
-  }
-
   const filteredCryptos = cryptos.filter((crypto) => {
-    const matchesSearch = crypto.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          crypto.symbol.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesFavorite = onlyFavorites ? crypto.isFavorite : true
+    const matchesSearch =
+      crypto.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      crypto.symbol.toLowerCase().includes(searchTerm.toLowerCase())
+    const matchesFavorite = onlyFavorites ? favorites.includes(crypto.id) : true
     return matchesSearch && matchesFavorite
   })
 
@@ -104,7 +100,7 @@ export default function HomePage() {
             <h2>Cotizaciones disponibles</h2>
           </div>
           <span className="currency-label">
-            {selectedCurrency} • {filteredCryptos.length} resultados
+            {selectedCurrency.toUpperCase()} • {filteredCryptos.length} resultados
           </span>
         </div>
 
@@ -124,11 +120,7 @@ export default function HomePage() {
           <StatusMessage message="Cotizaciones obtenidas exitosamente." type="success" />
         )}
 
-        <CryptoList
-          cryptos={filteredCryptos}
-          onToggleFavorite={handleToggleFavorite}
-          onSelect={() => {}}
-        />
+        <CryptoList cryptos={filteredCryptos} />
       </section>
     </>
   )

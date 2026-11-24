@@ -7,7 +7,7 @@ describe('cryptoservice - fetchCryptos', () => {
   });
 
   it('debería retornar un arreglo tipado de criptomonedas cuando la respuesta es exitosa', async () => {
-    // Simulamos una respuesta HTTP exitosa con fetch
+
     const mockApiResponse = {
       bitcoin: { usd: 60000 },
       ethereum: { usd: 3000 },
@@ -28,7 +28,7 @@ describe('cryptoservice - fetchCryptos', () => {
   });
 
   it('debería lanzar un error cuando la respuesta de la API es ok: false', async () => {
-    // Simulamos una respuesta fallida (ej. error 500 o 404)
+   
     vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce({
       ok: false,
     } as Response);

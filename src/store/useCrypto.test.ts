@@ -3,7 +3,7 @@ import { useCryptoStore } from './useCryptoStore';
 
 describe('useCryptoStore - Favoritos', () => {
   beforeEach(() => {
-    // Limpiamos el store antes de cada prueba
+    
     useCryptoStore.setState({ favorites: [] });
   });
 
@@ -21,7 +21,7 @@ describe('useCryptoStore - Favoritos', () => {
     useCryptoStore.setState({ favorites: ['bitcoin'] });
     const { toggleFavorite } = useCryptoStore.getState();
     
-    toggleFavorite('bitcoin'); // Al estar presente, debe removerla
+    toggleFavorite('bitcoin');
     
     const { favorites } = useCryptoStore.getState();
     expect(favorites).not.toContain('bitcoin');

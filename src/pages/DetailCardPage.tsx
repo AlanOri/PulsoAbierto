@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import type { Crypto } from '../types/crypto'
+import type { Crypto } from '../types/Crypto'
 import { fetchCryptos } from '../services/cryptoservice'
 import StatusMessage from '../components/StatusMessage'
 import { useCryptoStore } from '../store/useCryptoStore'

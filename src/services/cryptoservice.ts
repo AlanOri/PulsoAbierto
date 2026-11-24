@@ -1,5 +1,5 @@
-import type { Crypto } from '../types/crypto';
-import type { CoinGeckoPriceResponse } from '../types/crypto';
+import type { Crypto } from '../types/Crypto';
+import type { CoinGeckoPriceResponse } from '../types/Crypto';
 
 const API_URL = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd';
 

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import type { Crypto } from '../types/crypto';
+import type { Crypto } from '../types/Crypto';
 import { useCryptoStore } from '../store/useCryptoStore'; 
 
 interface CryptoCardProps {

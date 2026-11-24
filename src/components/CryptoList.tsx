@@ -1,12 +1,11 @@
-import type { Crypto } from '../types/crypto'
+import type { Crypto } from '../types/Crypto'
 import CryptoCard from './CryptoCard'
 
 interface CryptoListProps {
   cryptos: Crypto[]
-  onToggleFavorite: (id: string) => void
 }
 
-export default function CryptoList({ cryptos, onToggleFavorite }: CryptoListProps) {
+export default function CryptoList({ cryptos }: CryptoListProps) {
   if (cryptos.length === 0) {
     return null
   }
@@ -25,7 +24,6 @@ export default function CryptoList({ cryptos, onToggleFavorite }: CryptoListProp
         <CryptoCard
           key={crypto.id}
           crypto={crypto}
-          onToggleFavorite={onToggleFavorite}
         />
       ))}
     </div>
